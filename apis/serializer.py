@@ -1,17 +1,10 @@
 from rest_framework import serializers
 
-from .models import Showroom, Car
+from .models import GeeksModel
 
 
-class CarSerializer(serializers.ModelSerializer):
+class GeeksSerializer(serializers.ModelSerializer):
+    # specify model and fields
     class Meta:
-        model =  Car
-        fields = ['model_no', 'model_name', 'showroom']
-
-
-class ShowroomSerializer(serializers.ModelSerializer):
-    car = CarSerializer(source='car_set', many=True)
-
-    class Meta:
-        model = Showroom
-        fields = ['id', 'name', 'location', 'car']
+        model = GeeksModel
+        fields = ('title', 'description')
